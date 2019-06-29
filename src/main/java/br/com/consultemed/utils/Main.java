@@ -14,6 +14,7 @@ public class Main {
 		
 		contato.setNome("Emiliano Fernandes");
 		contato.setEmail("emilianocarvalho.dev@gmail.com");
+		contato.setTelefones();
 		contato.setTelefone("83 99692-3678");
 
 		System.out.println("Contato criado!");

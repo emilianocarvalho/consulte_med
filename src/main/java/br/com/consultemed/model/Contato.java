@@ -1,8 +1,11 @@
 package br.com.consultemed.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,30 +21,25 @@ public class Contato implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "nome_contato")
 	private String nome;
 	private String email;
-	private String telefone;
+
+	@ElementCollection
+	@CollectionTable(name = "contato_telefones")
+	private Set<String> telefones;
 
 	public Contato() {
 
 	}
 
-	public Contato(Long id, String nome, String email, String telefone) {
+	public Contato(Long id, String nome, String email, Set<String> telefones) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.telefone = telefone;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		this.telefones = telefones;
 	}
 
 	public String getNome() {
@@ -60,17 +58,17 @@ public class Contato implements Serializable {
 		this.email = email;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public Set<String> getTelefones() {
+		return telefones;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setTelefones(Set<String> telefones) {
+		this.telefones = telefones;
 	}
 
-	@Override
-	public String toString() {
-		return "Contato [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + "]";
+	public Long getId() {
+		return id;
 	}
 
+	
 }
