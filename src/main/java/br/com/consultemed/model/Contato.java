@@ -70,5 +70,11 @@ public class Contato implements Serializable {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "Contato [id=" + id + ", nome=" + nome + ", email=" + email + ", telefones=" + telefones + "]";
+	}
+
+	
 	
 }

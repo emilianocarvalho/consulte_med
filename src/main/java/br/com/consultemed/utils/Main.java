@@ -1,5 +1,9 @@
 package br.com.consultemed.utils;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 
 import br.com.consultemed.model.Contato;
@@ -14,11 +18,14 @@ public class Main {
 		
 		contato.setNome("Emiliano Fernandes");
 		contato.setEmail("emilianocarvalho.dev@gmail.com");
-		contato.setTelefones();
-		contato.setTelefone("83 99692-3678");
+		  		
+//        Set<String> telefones = Stream.of("83 99692-3678", "83 99692-3778", "83 99692-3878")
+//        		  .collect(Collectors.toCollection(HashSet::new));
 
-		System.out.println("Contato criado!");
-
+        Set<String> telefones = new HashSet<>(Arrays.asList("83 99692-3678", "83 99692-3778", "83 99692-3878"));
+        
+		contato.setTelefones(telefones);
+		
 		entityManager.getTransaction().begin();
 		entityManager.persist(contato);
 		entityManager.getTransaction().commit();
